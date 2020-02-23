@@ -1,0 +1,82 @@
+<!-- <template>
+    <div class="profile">
+      <v-container fixed>
+      <v-row>
+        <v-col cols="12" > 
+          <v-row
+            :align="alignment"
+            :justify="justify"
+            style="height: 300px;"
+          >
+    <v-card 
+      v-for="person in characters"
+      :key="person"
+      class="ma-3 pa-6" 
+      width="1200"
+     
+    >
+      <v-img
+        :src="person.img"
+        contain
+        height="500"
+  
+      ></v-img>
+  
+      <v-card-title>
+        {{person.name}}
+      </v-card-title>
+  
+      <v-card-subtitle>
+        {{person.portrayed}}
+      </v-card-subtitle>
+    </v-card>
+     </v-row>
+        </v-col>
+        <v-col cols="12">
+          <v-row justify="center">          
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-container>
+    </div>
+  </template> -->
+
+  <template>
+    <div class="profile">
+      <v-container fixed>
+      <v-row>
+        <v-col cols="12" > 
+          <v-row
+            :align="alignment"
+            :justify="justify"
+            style="height: 300px;"
+          >
+     <v-card 
+        v-for="person in characters"
+        :key="person"
+        class="d-inline-block mx-auto">
+      <v-img
+        :src="person.img"
+        contain
+        height="500"
+  
+      ></v-img>
+  
+      <v-card-title>
+        {{person.name}}
+      </v-card-title>
+  
+      <v-card-subtitle>
+        {{person.portrayed}}
+      </v-card-subtitle>
+    </v-card>
+     </v-row>
+        </v-col>
+        <v-col cols="12">
+          <v-row justify="center">          
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-container>
+    </div>
+  </template>

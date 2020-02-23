@@ -1,5 +1,5 @@
 <template>
-  <div class="Home">
+  <v-app>
     <v-container fixed>
     <v-row>
       <v-col cols="12" > 
@@ -11,7 +11,6 @@
   <v-card 
     v-for="character in characters"
     :key="character"
-    @click="getID(character.char_id, character.name), $router.push('Profile')"
     class="ma-3 pa-6" 
     width="344"
    
@@ -19,11 +18,10 @@
     <v-img
       :src="character.img"
       contain
-      height="300px"
+      height="200px"
     ></v-img>
 
-    <v-card-title
-    >
+    <v-card-title>
       {{character.name}}
     </v-card-title>
 
@@ -41,36 +39,27 @@
   </v-container>
     <v-content>
     </v-content>
-
-  </div>
+     </v-app>
 </template>
+
 
 <script>
 
 
 export default {
-  name: 'Home',
+  name: 'Cards',
     created() {
-    fetch('https://www.breakingbadapi.com/api/characters')
+    fetch('https://breakingbadapi.com/api/characters')
       .then(response => response.json())
       .then(result => {
         this.characters = result
         console.log(result)
       });
   },
-        data() {
+      data() {
         return {
           characters: [],
         };
-      },
-      methods:{
-        getID(id,qn){
-          console.log(id)
-          console.log(qn)
-          this.$store.state.personID = id
-          this.$store.state.qName = qn.replace(/\s/g, "+")
-
-        },
-      } , 
+      }
   }
 </script>
