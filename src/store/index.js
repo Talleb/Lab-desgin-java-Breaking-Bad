@@ -7,8 +7,12 @@ export default new Vuex.Store({
   state: {
     personID:[],
     qName: [],
+    drawer: false
   },
-  mutations: {
+  mutations: {  
+    setdrawer(state, drawer){
+     state.drawer = !drawer
+  }
   },
   actions: {
   },

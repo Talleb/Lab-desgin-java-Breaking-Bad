@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer
-      v-model="drawer"
+      v-model="this.$store.state.drawer"
       app
     >
       <v-list dense>
@@ -53,8 +53,8 @@
       color="green"
       dark
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title @click="$router.push('/')">Breaking Bad</v-toolbar-title>
+      <v-app-bar-nav-icon @click.stop="drawer = drawer" />
+      <v-toolbar-title @click="$router.push('/')">Breaking Bad </v-toolbar-title>
     </v-app-bar>
     <v-content>
         <router-view></router-view>
@@ -74,8 +74,17 @@
     props: {
       source: String,
     },
+    computed: {
+      drawer:{
+        get(){
+          return this.$store.state.drawer
+        },
+        set(drawer){
+          this.$store.commit("setdrawer", drawer);
+        }
+      }
+    },
     data: () => ({
-      drawer: false,
     }),
   }
 </script>

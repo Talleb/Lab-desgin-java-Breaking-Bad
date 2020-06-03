@@ -55,8 +55,8 @@
             </v-col>            
 
             <v-col class="px-0">
-              <v-btn @click="getQuote(person.name)">
-                Generate Qoute
+              <v-btn :times-generated="counter" @click="getQuote(person.name); count()">
+                Generate Qoute {{counter}}
               </v-btn>
               <div id="randomQoute">{{quotes}}</div>
             </v-col>
@@ -86,9 +86,19 @@ export default {
         return {
           characters: [],
           quotes: [],
+          counter: this.timesGenerated
         };
       },
+      props: {
+        timesGenerated: {
+        source: Number,
+        default: 0
+    }
+    },
       methods:{
+        count(){
+          this.counter = this.counter + 1
+        },
         getQuote(qName){
          fetch(`https://breakingbadapi.com/api/quote/random?author=${this.$store.state.qName}`)
           .then(response => response.json())
@@ -100,5 +110,6 @@ export default {
           console.log(qName)
         },
       }
+  
   }
 </script>
