@@ -18,49 +18,12 @@
           cols="auto"
           class="text-center pl-0"
         >
-          <v-row
-            class="flex-column ma-0 fill-height"
-            justify="center"
-          >
-            <v-col class="px-0">
-              <H1>Name</H1>
-              <p>
-              {{person.name}}
-              </p>
-            </v-col>
-
-            <v-col class="px-0">
-              <H1>Alias</H1>
-              <p >
-              {{person.nickname}}
-              </p>
-            </v-col>
-
-            <v-col class="px-0">
-              <H1>Occupation</H1>
-          <ul>
-            <li 
-            v-for="(occupation, index) in person.occupation"
-            :key="occupation"> 
-            {{person.occupation[index]}}
-            </li>
-          </ul>
-            </v-col>
-
-            <v-col class="px-0">
-              <H1>Status</H1>
-              <p>
-              {{person.status}}
-              </p>
-            </v-col>            
-
-            <v-col class="px-0">
-              <v-btn :times-generated="counter" @click="getQuote(person.name); count()">
-                Generate Qoute {{counter}}
-              </v-btn>
-              <div id="randomQoute">{{quotes}}</div>
-            </v-col>
-          </v-row>
+          <ProfileText v-bind:person="{
+            name: person.name,
+            nickname: person.nickname,
+            occupation: person.occupation,
+            status: person.status
+          }" />
         </v-col>
       </v-row>
     </v-container>
@@ -72,8 +35,13 @@
 
 <script>
 
+import ProfileText from '../components/ProfileText.vue'
+
 export default {
   name: 'Profile',
+  components: {
+    ProfileText
+  },
     created() {
     fetch(`https://www.breakingbadapi.com/api/characters/${this.$store.state.personID}`)
       .then(response => response.json())

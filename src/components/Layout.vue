@@ -53,7 +53,7 @@
       color="green"
       dark
     >
-      <v-app-bar-nav-icon @click.stop="drawer = drawer" />
+      <v-app-bar-nav-icon @click.stop="toggle"/>
       <v-toolbar-title @click="$router.push('/')">Breaking Bad </v-toolbar-title>
     </v-app-bar>
     <v-content>
@@ -75,16 +75,13 @@
       source: String,
     },
     computed: {
-      drawer:{
-        get(){
-          return this.$store.state.drawer
-        },
-        set(drawer){
-          this.$store.commit("setdrawer", drawer);
-        }
-      }
     },
-    data: () => ({
-    }),
+    methods: {
+      toggle() {
+          this.$store.commit("setdrawer");
+      },
+    },
+       data() {
+      }
   }
 </script>

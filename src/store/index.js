@@ -10,9 +10,9 @@ export default new Vuex.Store({
     drawer: false
   },
   mutations: {  
-    setdrawer(state, drawer){
-     state.drawer = !drawer
-  }
+  setdrawer(state){
+    state.drawer = !state.drawer
+}
   },
   actions: {
   },
